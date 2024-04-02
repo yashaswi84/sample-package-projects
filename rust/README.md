@@ -18,6 +18,15 @@ A basic Rust application that will incorporate the Inner Source library.
 ## Pre Reqs (Local Build)
 1. Install Cargo
 2. Configure Cargo
+3. Setup `~/.cargo/credentials`
+```toml
+ [registries.artifactory]                                                  
+ token = "Bearer <access token>"
+                  
+ [registry]         
+ token = "<access token>"   
+```
+4. 
 ## Steps
 1. Create the library
 ```bash

@@ -1,0 +1,7 @@
+on: workflow_dispatch
+jobs:
+  Test-Cargo-In-Actions:
+    runs-on: ubuntu-latest
+    container: rust:slim-bullseye
+    steps:
+      - run: 'cargo --version'
