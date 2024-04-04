@@ -3,17 +3,27 @@ on: workflow_dispatch
 
 env:
   CARGO_TERM_COLOR: always
-  AUTHENTICATION_TOKEN: ${{ secrets.RUST_EXAMPLE_AUTHENTICATION_TOKEN }}
+  CARGO_REGISTRIES_CRATES_TOKEN: ${{ secrets.RUST_EXAMPLE_AUTHENTICATION_TOKEN }}
+  CARGO_REGISTRIES_INNERSOURCE_TOKEN: ${{ secrets.RUST_EXAMPLE_AUTHENTICATION_TOKEN }}
+  CARGO_REGISTRIES_JFROGQUOTES_TOKEN: ${{ secrets.RUST_EXAMPLE_AUTHENTICATION_TOKEN }}
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Validate Cargo installation
-        run: 'cargo --version'
-      - name: Build
-        run: 'cargo build --release --verbose'
-      - name: Publish To Artifactory
-        run: "cargo publish --registry artifactory --token \"$AUTHENTICATION_TOKEN\""
+        run: cargo --version
+      - name: Switch to Library Directory
+        run: cd "$GITHUB_WORKSPACE\rust\jfrog_quotes"
+      - name: Build Library
+        run: cargo build --release --verbose
+      - name: Publish Library To Artifactory
+        run: cargo publish
+      - name: Switch to Application Directory
+        run: cd "$GITHUB_WORKSPACE\rust\jfrog_app"
+      - name: Build Application
+        run: cargo build --release --verbose
+      - name: Publish Application To Artifactory
+        run: cargo publish
