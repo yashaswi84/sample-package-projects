@@ -28,22 +28,22 @@ A basic Rust application that will incorporate the Inner Source library.
  [registry]         
  token = "<access token>"   
 ```
-4.
-## Steps
-1. Create the library
+Alternatively, you can set your various registries' authentication tokens with environment variables, or other credentials providers. (TODO: Add links)
+This example will rely on the most simple: an environment variable.  This is done by following this pattern: `export CARGO_REGISTRIES_<NAME>_TOKEN="Bearer <secret>"`
+For example, this will set the token for the registry set in `.cargo/config.toml` named "foo" with the value of "Bearer bar"
 ```bash
-cargo new --lib jfrog_quotes
+export CARGO_REGISTRIES_FOO_TOKEN="Bearer bar"
 ```
-2. Create the app
+## Cargo configuration
+TODO: Provide details on the library's `Cargo.toml`, esp around where to resolve external dependencies
+## Steps to build and publish the innersource library, `jfrog_quotes`
+### Build the Library
 ```bash
-cargo new jfrog_app
-```
-3. Build the Library
-```bash
+cd rust/jfrog_quotes
 cargo build --release
 ```
-5. Publish the Library
+### Publish the Library
 ```bash
-cargo publish --registry artifactory
+cargo publish --registry innersource
 ```
 
