@@ -22,7 +22,7 @@ jobs:
 
       - name: Publish Library To Artifactory
         working-directory: ./rust/jfrog_quotes
-        run: cargo publish
+        run: cargo publish --token ${{ secrets.RUST_EXAMPLE_AUTHENTICATION_TOKEN }}
 
       - name: Build Application
         working-directory: ./rust/jfrog_app
@@ -30,4 +30,4 @@ jobs:
 
       - name: Publish Application To Artifactory
         working-directory: ./rust/jfrog_app
-        run: cargo publish
+        run: cargo publish --token ${{ secrets.RUST_EXAMPLE_AUTHENTICATION_TOKEN }}
