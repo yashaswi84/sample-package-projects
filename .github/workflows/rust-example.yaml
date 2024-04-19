@@ -16,13 +16,13 @@ jobs:
       - name: Validate Cargo installation
         run: cargo --version
       - name: Switch to Library Directory
-        run: cd "$GITHUB_WORKSPACE\rust\jfrog_quotes"
+        run: cd "$GITHUB_WORKSPACE/rust/jfrog_quotes"
       - name: Build Library
         run: cargo build --release --verbose
       - name: Publish Library To Artifactory
         run: cargo publish
       - name: Switch to Application Directory
-        run: cd "$GITHUB_WORKSPACE\rust\jfrog_app"
+        run: cd "$GITHUB_WORKSPACE/rust/jfrog_app"
       - name: Build Application
         run: cargo build --release --verbose
       - name: Publish Application To Artifactory
