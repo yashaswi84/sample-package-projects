@@ -17,17 +17,17 @@ jobs:
         run: cargo --version
 
       - name: Build Library
-        working-directory: "$GITHUB_WORKSPACE/rust/jfrog_quotes"
+        working-directory: ./rust/jfrog_quotes
         run: cargo build --release --verbose
 
       - name: Publish Library To Artifactory
-        working-directory: "$GITHUB_WORKSPACE/rust/jfrog_quotes"
+        working-directory: ./rust/jfrog_quotes
         run: cargo publish
 
       - name: Build Application
-        working-directory: "$GITHUB_WORKSPACE/rust/jfrog_app"
+        working-directory: ./rust/jfrog_app
         run: cargo build --release --verbose
 
       - name: Publish Application To Artifactory
-        working-directory: "$GITHUB_WORKSPACE/rust/jfrog_app"
+        working-directory: ./rust/jfrog_app
         run: cargo publish
