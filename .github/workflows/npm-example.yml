@@ -28,8 +28,8 @@ jobs:
       - run: |
           jf npmc --repo-deploy=ghjfdemo-ghjf-npm-virt --repo-resolve=ghjfdemo-ghjf-npm-remote
       - run: |
+          working-directory: ./npm
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
-          working-directory: /npm
       - run: |
           jf rt build-add-git ghdemo-npm-build 1.0.${{github.run_number}}
       - run: |
