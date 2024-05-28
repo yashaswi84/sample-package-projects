@@ -21,14 +21,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # This action sets up the JFrog CLI with the Artifactory URL and access token     
-      # - name: Get JFrog CLI -v4   
-      #   uses: jfrog/setup-jfrog-cli@v3
-      #   env:
-      #     JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
-      #     JF_URL: https://${{ vars.JF_URL }}/
-      #     JF_PROJECT: ${{ vars.JF_PROJECT }}
-
+      # Download the JFrog CLI and configure using JFrog Project and OIDC provider 
       - uses: eyaldelarea/setup-jfrog-cli@cleanUpSummaries
         name: Setup JFrog CLI
         id: setup-cli
@@ -43,22 +36,30 @@ jobs:
           export SERVER_ID="test"
           jf -v
           jf c add $SERVER_ID --url=$URL --access-token=$ACCESS_TOKEN --interactive=false
-
+      # Ping the JFrog Platfrom instnace 
       - run: |
           jf rt ping
+      # Configure JFrog CLI for NPM 
       - run: |
           jf npmc --repo-deploy=ghjfdemo-ghjf-npm-virt --repo-resolve=ghjfdemo-ghjf-npm-remote
+      # NPM Install using the CLI  
       - run: |
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
+      # Add GitHub Data to BuildInfo 
       - run: |
           jf rt build-add-git ghdemo-npm-build 1.0.${{github.run_number}}
+      # Collect all Environmental information for NPM Build 
       - run: |
           jf rt build-collect-env ghdemo-npm-build 1.0.${{github.run_number}}
+      # Using NPM Publish to uplaod the NPM Build 
       - run: |
           jf npm publish --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
+      # Publish the BuildInfo into Artifactory 
       - run: |
           jf rt build-publish ghdemo-npm-build 1.0.${{github.run_number}}
+      # Scan the NPM Build with Xray 
       - run: |
           jf rt build-scan ghdemo-npm-build 1.0.${{github.run_number}}
+      # Promote the Build from Dev to Production 
       - run: |
           jf rt build-promote ghdemo-npm-build 1.0.${{github.run_number}} ghjfdemo-ghjf-npm-prod-local  --status=production
