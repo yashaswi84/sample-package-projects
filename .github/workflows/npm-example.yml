@@ -30,9 +30,15 @@ jobs:
       - run: |
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
           working-directory: ./npm
+      - run: |
           jf rt build-add-git ghdemo-npm-build 1.0.${{github.run_number}}
+      - run: |
           jf rt build-collect-env ghdemo-npm-build 1.0.${{github.run_number}}
+      - run: |
           jf rt npm-publish --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
+      - run: |
           jf rt build-publish ghdemo-npm-build 1.0.${{github.run_number}}
+      - run: |
           jf rt build-scan ghdemo-npm-build 1.0.${{github.run_number}}
+      - run: |
           jf rt build-promote ghdemo-npm-build 1.0.${{github.run_number}} ghjfdemo-ghjf-npm-prod-local  --status=production
