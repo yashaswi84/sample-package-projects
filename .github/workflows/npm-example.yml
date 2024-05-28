@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JF_PROJECT: ${{ vars.JF_PROJECT }}
+      JF_URL: https://${{ vars.JF_URL }}/
     defaults:
       run:
         working-directory: npm
