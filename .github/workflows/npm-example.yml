@@ -12,7 +12,7 @@ jobs:
 
       # This action sets up the JFrog CLI with the Artifactory URL and access token     
       - name: Get JFrog CLI -v4   
-        uses: jfrog/setup-jfrog-cli@v
+        uses: jfrog/setup-jfrog-cli@v3
         env:
           JF_URL: ${{ secrets.ARTIFACTORY_URL }}
           JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
