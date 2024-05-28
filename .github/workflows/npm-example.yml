@@ -25,6 +25,7 @@ jobs:
 
       - run: |
           jf rt ping
+          working-directory: ./npm
           jf npmc --repo-deploy=ghjfdemo-ghjf-npm-virt --repo-resolve=ghjfdemo-ghjf-npm-remote
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
           jf rt build-add-git ghdemo-npm-build 1.0.${{github.run_number}}
