@@ -9,6 +9,7 @@ jobs:
       # This action checks out the code from the repository
       - name: Checkout Code
         uses: actions/checkout@v2
+        working-directory: ./npm
 
       # This action sets up the JFrog CLI with the Artifactory URL and access token     
       - name: Get JFrog CLI -v4   
@@ -25,7 +26,6 @@ jobs:
 
       - run: |
           jf rt ping
-          working-directory: ./npm
           jf npmc --repo-deploy=ghjfdemo-ghjf-npm-virt --repo-resolve=ghjfdemo-ghjf-npm-remote
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
           jf rt build-add-git ghdemo-npm-build 1.0.${{github.run_number}}
