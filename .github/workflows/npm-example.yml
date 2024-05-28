@@ -1,5 +1,6 @@
 name: Push NPM Build to Artifactory
-on: [push]
+on: workflow_dispatch
+
 permissions:
   id-token: write # for creating OIDC tokens for signing.
 
