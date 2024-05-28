@@ -24,7 +24,7 @@ jobs:
           jf c add $SERVER_ID --url=$URL --access-token=$ACCESS_TOKEN --interactive=false
 
       - run: |
-          working-directory: ./app
+          working-directory: ./npm
           jf rt ping
           jf npmc --repo-deploy=ghjfdemo-ghjf-npm-virt --repo-resolve=ghjfdemo-ghjf-npm-remote
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
