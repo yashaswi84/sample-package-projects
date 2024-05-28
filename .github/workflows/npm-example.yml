@@ -6,6 +6,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      JF_PROJECT: ${{ vars.JF_PROJECT }}
     defaults:
       run:
         working-directory: npm
