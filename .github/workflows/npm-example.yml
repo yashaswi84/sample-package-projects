@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      JF_PROJECT: ${{ vars.JF_PROJECT }}
+      JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
       JF_URL: https://${{ vars.JF_URL }}/
     defaults:
       run:
@@ -20,6 +20,9 @@ jobs:
       # This action checks out the code from the repository
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          repository: "eyaldelarea/jfrog-cli"
+          ref: "job_summaries"
 
       # Download the JFrog CLI and configure using JFrog Project and OIDC provider 
       - uses: eyaldelarea/setup-jfrog-cli@cleanUpSummaries
@@ -27,7 +30,7 @@ jobs:
         id: setup-cli
         env:
           JF_URL: https://${{ vars.JF_URL }}/
-          JF_PROJECT: ${{ vars.JF_PROJECT }}
+          JF_PROJECT: ${{ vars.JF_PROJECT_KEY }}
         with:
             oidc-provider-name: jfrog-github-oidc
       
