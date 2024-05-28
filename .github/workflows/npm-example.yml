@@ -51,7 +51,7 @@ jobs:
       - run: |
           jf rt build-collect-env ghdemo-npm-build 1.0.${{github.run_number}}
       - run: |
-          jf rt npm-publish --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
+          jf npm publish --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
       - run: |
           jf rt build-publish ghdemo-npm-build 1.0.${{github.run_number}}
       - run: |
