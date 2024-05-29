@@ -34,7 +34,6 @@ jobs:
       # This command adds a new server configuration to the JFrog CLI   
       - run: |
           jf -v
-      # jf c --url=https://${{ vars.JF_URL }}/ --interactive=false
       # Ping the JFrog Platfrom instnace 
       - run: |
           jf rt ping
