@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       # Download the JFrog CLI and configure using JFrog Project and OIDC provider 
-      - uses: eyaldelarea/setup-jfrog-cli@cleanUpSummaries
+      - uses: jfrog/setup-jfrog-cli@v4
         name: Setup JFrog CLI
         id: setup-cli
         env:
