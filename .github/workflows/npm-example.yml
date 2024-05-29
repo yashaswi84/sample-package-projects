@@ -33,9 +33,8 @@ jobs:
       
       # This command adds a new server configuration to the JFrog CLI   
       - run: |
-          export SERVER_ID="GitHub Test"
           jf -v
-          jf c add $SERVER_ID --url=https://${{ vars.JF_URL }}/ --interactive=false
+      # jf c --url=https://${{ vars.JF_URL }}/ --interactive=false
       # Ping the JFrog Platfrom instnace 
       - run: |
           jf rt ping
