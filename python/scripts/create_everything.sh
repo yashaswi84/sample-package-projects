@@ -5,12 +5,8 @@ sh create_virtual_repos.sh
 
 sh index_build.sh
 
-echo "Random build number"
-RANDOM=$$
-export BUILD_NUMBER=${RANDOM}
-#export BUILD_NAME='pythonproject-build'
-export VIRTUAL_REPO='PackageKnowledge-python-virtual'
+sh create_policy_and_watch.sh
 
 echo "Creating Python build "
-sh create-python-build.sh
+sh create_python_build.sh
 
