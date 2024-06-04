@@ -22,18 +22,28 @@
             {
                 "type": "repository",
                 "bin_mgr_id": "default",
-                "name": "PackageKnowledge-python-dev-local"
+                "name": "PackageKnowledge-python-dev-local",
+                "repo_type": "local"
             },
             {
                 "type": "repository",
                 "bin_mgr_id": "default",
-                "name": "PackageKnowledge-python-qa-local"
+                "name": "PackageKnowledge-python-qa-local",
+                "repo_type": "local"
             },
             {
                 "type": "repository",
                 "bin_mgr_id": "default",
-                "name": "PackageKnowledge-python-prod-local"
+                "name": "PackageKnowledge-python-prod-local",
+                "repo_type": "local"
+            },
+            {
+                "type": "repository",
+                "bin_mgr_id": "default",
+                "name": "PackageKnowledge-python-remote",
+                "repo_type": "remote"
             }
+            
         ]
     },
     "assigned_policies": [
