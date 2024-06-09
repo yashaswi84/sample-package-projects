@@ -7,6 +7,3 @@ sh index_build.sh
 
 sh create_policy_and_watch.sh
 
-echo "Creating Python build "
-#sh create_python_build.sh
-
