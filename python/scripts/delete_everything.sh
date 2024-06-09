@@ -12,3 +12,4 @@ sh delete_build.sh
 echo "purge PIP cache"
 pip cache purge
 
+#pip uninstall click jfrog-python-example nltk tqdm yolk joblib regex Werkzeug

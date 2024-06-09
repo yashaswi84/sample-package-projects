@@ -7,17 +7,9 @@
     "project_resources": {
         "resources": [
             {
-                "type": "all-builds",
+                "type": "build",
                 "bin_mgr_id": "default",
-                "filters": [
-                    {
-                        "type": "ant-patterns",
-                        "value":{
-                            "ExcludePatterns": [],
-                            "IncludePatterns": ["packagepython*"]
-                        }
-                    }
-                ]
+                "name":"pythonproject-build"
             },
             {
                 "type": "repository",
