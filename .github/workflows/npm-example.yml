@@ -29,7 +29,7 @@ jobs:
           JF_URL: https://${{ vars.JF_URL }}/
           JF_PROJECT: ${{ vars.JF_PROJECT }}
         with:
-            oidc-provider-name: jfrog-github-oidc
+            oidc-provider-name: github
       
       # This command adds a new server configuration to the JFrog CLI   
       - run: |
@@ -39,7 +39,7 @@ jobs:
           jf rt ping
       # Configure JFrog CLI for NPM 
       - run: |
-          jf npmc --repo-deploy=ghjfdemo-ghjf-npm-virt --repo-resolve=ghjfdemo-ghjf-npm-remote
+          jf npmc --repo-deploy=yash-npm-virtual --repo-resolve=yash-npm-remote
       # NPM Install using the CLI  x
       - run: |
           jf npm install --build-name=ghdemo-npm-build --build-number=1.0.${{github.run_number}}
